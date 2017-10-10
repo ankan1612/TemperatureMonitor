@@ -1,0 +1,36 @@
+<div class="container-fluid">
+  <div class="row justify-content-center content">
+    <div class="col col-md-6">
+      <mat-card>
+        <div class="card-header"><h1>Temperature Monitor</h1></div>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Add new temperature" [(ngModel)]="tempInp">
+        </mat-form-field>
+        <button mat-raised-button color="primary" [disabled]="!tempInp" (click)="recordTemperature()"><i class="fa fa-plus-square fa-fw" aria-hidden="true"></i>Add</button>
+        <em>A max of 8 temperatures allowed</em>
+        <hr/>
+        <mat-progress-bar *ngIf="filled" mode="determinate" [value]="filled"></mat-progress-bar>
+        <br/>
+        <mat-chip-list>
+          <mat-chip *ngFor="let temp of tm.temperatures; let i= index" [selectable]="selectable" [removable]="removable" (remove)="removeTemperature(i)">
+            <i class="fa fa-thermometer-empty fa-fw" aria-hidden="true"></i>{{temp}}
+            <i matChipRemove class="fa fa-times-circle fa-fw" *ngIf="removable" aria-hidden="true"></i>
+          </mat-chip>
+        </mat-chip-list>
+        <hr/>
+        <section class="row justify-content-center">
+          <button mat-raised-button color="accent" *ngIf="filled" (click)="getCurrentMedian()">Get Median Temperature</button>
+        </section>
+        <hr>
+        <div *ngIf="median" class="median">Current Median: {{median}}</div>
+        <hr>
+        <div class="row ">
+          <div class="col col-md-6 d-flex justify-content-start">Check out the project :<a href="https://github.com/ankan1612">here</a></div>
+          <div class="col col-md-6 d-flex justify-content-end">Developed by : <a href="https://github.com/ankan1612">Ankan Kumar Giri</a></div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+
+</div>
