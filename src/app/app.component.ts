@@ -17,7 +17,7 @@ export class AppComponent {
   error: any={};
 
 
-  constructor(private tm: TemperatureMonitor, public dialog: MatDialog){}
+  constructor(public tm: TemperatureMonitor, public dialog: MatDialog){}
 
   recordTemperature(): void{
     if(isNaN(this.tempInp)){
